@@ -1,5 +1,5 @@
 //
-//  IssueLink.swift
+//  User.swift
 //  Jiramazing
 //
 //  Created by Justin Hill on 7/23/16.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-@objc(JRAIssueLink) class IssueLink: NSObject {
+@objc(JRAUser) class User: NSObject {
 
 }

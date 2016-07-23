@@ -6,8 +6,15 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class Attachment: NSObject {
-
+@objc(JRAAttachment) class Attachment: NSObject {
+    var url: NSURL?
+    var fileName: String?
+    var author: User?
+    var creationDate: NSDate?
+    var sizeBytes: UInt?
+    var mimeType: String?
+    var contentUrl: NSURL?
+    var thumbnailUrl: NSURL?
 }

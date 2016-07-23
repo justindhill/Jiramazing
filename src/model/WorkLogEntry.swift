@@ -6,8 +6,8 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class WorkLogEntry: NSObject {
+@objc(JRAWorkLogEntry) class WorkLogEntry: NSObject {
 
 }

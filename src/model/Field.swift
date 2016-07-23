@@ -6,8 +6,15 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class Field: NSObject {
-
+@objc(JRAField) class Field: NSObject {
+    @objc(identifier) var id: String?
+    var name: String?
+    var custom: Bool?
+    var orderable: Bool?
+    var navigable: Bool?
+    var searchable: Bool?
+    var clauseNames: [String]?
+    var schema: FieldSchema?
 }

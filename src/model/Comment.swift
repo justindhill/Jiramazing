@@ -6,8 +6,8 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class Comment: NSObject {
+@objc(JRAComment) class Comment: NSObject {
 
 }

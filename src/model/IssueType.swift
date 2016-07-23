@@ -1,5 +1,5 @@
 //
-//  IssueLink.swift
+//  IssueType.swift
 //  Jiramazing
 //
 //  Created by Justin Hill on 7/23/16.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-@objc(JRAIssueLink) class IssueLink: NSObject {
+@objc(JRAIssueType) class IssueType: NSObject {
 
 }

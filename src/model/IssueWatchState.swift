@@ -6,8 +6,9 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class IssueWatchState: NSObject {
-
+@objc(JRAIssueWatchState) class IssueWatchState: NSObject {
+    var watching: Bool?
+    var watchers: [User]?
 }

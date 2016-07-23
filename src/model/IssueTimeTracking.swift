@@ -6,8 +6,13 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
-class IssueTimeTracking: NSObject {
-
+@objc(JRAIssueTimeTracking) class IssueTimeTracking: NSObject {
+    var originalEstimateString: String?
+    var remainingEstimateString: String?
+    var timeSpentString: String?
+    var originalEstimate: NSTimeInterval?
+    var remainingEstimate: NSTimeInterval?
+    var timeSpent: NSTimeInterval?
 }
