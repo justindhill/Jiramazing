@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		D06653E11D43F811006C6532 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06653E01D43F811006C6532 /* main.swift */; };
 		D06654151D43FA14006C6532 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654141D43FA14006C6532 /* Issue.swift */; };
+		D06654171D4405C0006C6532 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654161D4405C0006C6532 /* Field.swift */; };
+		D06654191D440653006C6532 /* IssueWatchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654181D440653006C6532 /* IssueWatchState.swift */; };
+		D066541B1D440696006C6532 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066541A1D440696006C6532 /* Attachment.swift */; };
+		D066541D1D44074D006C6532 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066541C1D44074D006C6532 /* Project.swift */; };
+		D066541F1D440817006C6532 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066541E1D440817006C6532 /* Comment.swift */; };
+		D06654211D440848006C6532 /* IssueLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654201D440848006C6532 /* IssueLink.swift */; };
+		D06654231D44089F006C6532 /* WorkLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654221D44089F006C6532 /* WorkLogEntry.swift */; };
+		D06654251D4408D3006C6532 /* IssueTimeTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654241D4408D3006C6532 /* IssueTimeTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +35,14 @@
 		D06653D41D43F5F4006C6532 /* Jiramazing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Jiramazing; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06653E01D43F811006C6532 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D06654141D43FA14006C6532 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		D06654161D4405C0006C6532 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		D06654181D440653006C6532 /* IssueWatchState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueWatchState.swift; sourceTree = "<group>"; };
+		D066541A1D440696006C6532 /* Attachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
+		D066541C1D44074D006C6532 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		D066541E1D440817006C6532 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		D06654201D440848006C6532 /* IssueLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueLink.swift; sourceTree = "<group>"; };
+		D06654221D44089F006C6532 /* WorkLogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkLogEntry.swift; sourceTree = "<group>"; };
+		D06654241D4408D3006C6532 /* IssueTimeTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTimeTracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +93,14 @@
 			isa = PBXGroup;
 			children = (
 				D06654141D43FA14006C6532 /* Issue.swift */,
+				D06654161D4405C0006C6532 /* Field.swift */,
+				D06654181D440653006C6532 /* IssueWatchState.swift */,
+				D06654201D440848006C6532 /* IssueLink.swift */,
+				D06654241D4408D3006C6532 /* IssueTimeTracking.swift */,
+				D066541A1D440696006C6532 /* Attachment.swift */,
+				D066541C1D44074D006C6532 /* Project.swift */,
+				D066541E1D440817006C6532 /* Comment.swift */,
+				D06654221D44089F006C6532 /* WorkLogEntry.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -139,7 +163,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06653E11D43F811006C6532 /* main.swift in Sources */,
+				D06654211D440848006C6532 /* IssueLink.swift in Sources */,
+				D06654231D44089F006C6532 /* WorkLogEntry.swift in Sources */,
+				D06654191D440653006C6532 /* IssueWatchState.swift in Sources */,
+				D06654171D4405C0006C6532 /* Field.swift in Sources */,
+				D066541F1D440817006C6532 /* Comment.swift in Sources */,
 				D06654151D43FA14006C6532 /* Issue.swift in Sources */,
+				D066541B1D440696006C6532 /* Attachment.swift in Sources */,
+				D066541D1D44074D006C6532 /* Project.swift in Sources */,
+				D06654251D4408D3006C6532 /* IssueTimeTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
