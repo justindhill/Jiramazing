@@ -9,5 +9,13 @@
 import Foundation
 
 @objc(JRAUser) class User: NSObject {
-
+    var url: NSURL?
+    var key: String?
+    var name: String?
+    var emailAddress: String?
+    var avatarUrls: [AvatarSize: NSURL]?
+    var active: Bool?
+    var timeZone: NSTimeZone?
+    var groups: [String]?
+    var applicationRoles: [ApplicationRole]?
 }

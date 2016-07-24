@@ -9,5 +9,11 @@
 import Foundation
 
 @objc(JRAIssueType) class IssueType: NSObject {
-
+    var url: NSURL?
+    @objc(identifier) var id: String?
+    var issueTypeDescription: String?
+    var iconUrl: NSURL?
+    var name: String?
+    var subtask: Bool?
+    @objc(avatarIdentifier) var avatarId: Int = NSNotFound
 }

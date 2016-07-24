@@ -18,5 +18,5 @@ import Foundation
     var releaseDate: NSDate?
     var overdue: Bool?
     var userReleaseDate: NSDate?
-    var projectId: Int?
+    @objc(projectIdentifier) var projectId: Int?
 }

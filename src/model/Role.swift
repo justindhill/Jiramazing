@@ -6,10 +6,10 @@
 //  Copyright © 2016 Justin Hill. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 @objc(JRARole) class Role: NSObject {
     var name: String?
-    @objc(identifier) var id: Int = 0
+    @objc(identifier) var id: Int = NSNotFound
     var roleDescription: String?
 }

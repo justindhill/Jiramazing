@@ -19,16 +19,12 @@ import Foundation
 
     var issueTypes: [IssueType]?
 
-    // TODO: browse URL?
-
     var browseUrl: NSURL?
     var email: String?
     var assigneeType: String?
     var versions: [Version]?
     var name: String?
     var roles: [Role]?
-
-    // TODO: avatar URLs
-    
+    var avatarUrls: [AvatarSize: NSURL]?
     var category: ProjectCategory?
 }

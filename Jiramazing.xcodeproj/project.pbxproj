@@ -24,6 +24,10 @@
 		D066542F1D442FF9006C6532 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066542E1D442FF9006C6532 /* Version.swift */; };
 		D06654311D4430F7006C6532 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654301D4430F7006C6532 /* Role.swift */; };
 		D06654331D44328E006C6532 /* ProjectCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654321D44328E006C6532 /* ProjectCategory.swift */; };
+		D06654351D44342A006C6532 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654341D44342A006C6532 /* Constants.swift */; };
+		D06654371D4439B1006C6532 /* Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654361D4439B1006C6532 /* Visibility.swift */; };
+		D066543B1D443CB7006C6532 /* ApplicationRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066543A1D443CB7006C6532 /* ApplicationRole.swift */; };
+		D066543D1D443E2F006C6532 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066543C1D443E2F006C6532 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +61,10 @@
 		D066542E1D442FF9006C6532 /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		D06654301D4430F7006C6532 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		D06654321D44328E006C6532 /* ProjectCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCategory.swift; sourceTree = "<group>"; };
+		D06654341D44342A006C6532 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D06654361D4439B1006C6532 /* Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visibility.swift; sourceTree = "<group>"; };
+		D066543A1D443CB7006C6532 /* ApplicationRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationRole.swift; sourceTree = "<group>"; };
+		D066543C1D443E2F006C6532 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				D06654131D43F920006C6532 /* model */,
+				D06654341D44342A006C6532 /* Constants.swift */,
+				D066543C1D443E2F006C6532 /* Utils.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -118,8 +128,10 @@
 				D066541C1D44074D006C6532 /* Project.swift */,
 				D06654321D44328E006C6532 /* ProjectCategory.swift */,
 				D066541E1D440817006C6532 /* Comment.swift */,
+				D06654361D4439B1006C6532 /* Visibility.swift */,
 				D06654221D44089F006C6532 /* WorkLogEntry.swift */,
 				D06654281D440C7B006C6532 /* User.swift */,
+				D066543A1D443CB7006C6532 /* ApplicationRole.swift */,
 				D06654301D4430F7006C6532 /* Role.swift */,
 				D066542E1D442FF9006C6532 /* Version.swift */,
 			);
@@ -185,6 +197,7 @@
 			files = (
 				D06653E11D43F811006C6532 /* main.swift in Sources */,
 				D066542F1D442FF9006C6532 /* Version.swift in Sources */,
+				D066543B1D443CB7006C6532 /* ApplicationRole.swift in Sources */,
 				D06654211D440848006C6532 /* IssueLink.swift in Sources */,
 				D06654231D44089F006C6532 /* WorkLogEntry.swift in Sources */,
 				D06654191D440653006C6532 /* IssueWatchState.swift in Sources */,
@@ -194,12 +207,15 @@
 				D06654311D4430F7006C6532 /* Role.swift in Sources */,
 				D066542B1D440D6C006C6532 /* IssueLinkType.swift in Sources */,
 				D066542D1D4415A0006C6532 /* IssueType.swift in Sources */,
+				D06654371D4439B1006C6532 /* Visibility.swift in Sources */,
 				D06654271D440BBD006C6532 /* FieldSchema.swift in Sources */,
 				D06654151D43FA14006C6532 /* Issue.swift in Sources */,
 				D06654291D440C7B006C6532 /* User.swift in Sources */,
 				D066541B1D440696006C6532 /* Attachment.swift in Sources */,
+				D066543D1D443E2F006C6532 /* Utils.swift in Sources */,
 				D066541D1D44074D006C6532 /* Project.swift in Sources */,
 				D06654251D4408D3006C6532 /* IssueTimeTracking.swift in Sources */,
+				D06654351D44342A006C6532 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
