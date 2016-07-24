@@ -1,0 +1,16 @@
+PODS:
+  - Jiramazing (0.0.1)
+
+DEPENDENCIES:
+  - Jiramazing (from `../`)
+
+EXTERNAL SOURCES:
+  Jiramazing:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Jiramazing: d5413f62d2696d3e6f66cc628bf8299d60d20dbf
+
+PODFILE CHECKSUM: ea9bc24420b7226b6781bf1cb6f55d75aacaf389
+
+COCOAPODS: 1.0.1

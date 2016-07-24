@@ -9,10 +9,10 @@
 import Foundation
 
 @objc public class Jiramazing: NSObject, NSURLSessionDelegate {
-    var authenticated: Bool = false
+    public private(set) var authenticated: Bool = false
     private var urlSession: NSURLSession!
 
-    @objc(sharedInstance) static var instance = Jiramazing()
+    @objc(sharedInstance) public static var instance = Jiramazing()
 
     override init() {
         super.init()
