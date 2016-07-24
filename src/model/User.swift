@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAUser) class User: NSObject {
+@objc(JRAUser) public class User: NSObject {
     var url: NSURL?
     var key: String?
     var name: String?

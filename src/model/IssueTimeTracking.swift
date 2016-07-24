@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAIssueTimeTracking) class IssueTimeTracking: NSObject {
+@objc(JRAIssueTimeTracking) public class IssueTimeTracking: NSObject {
     var originalEstimateString: String?
     var remainingEstimateString: String?
     var timeSpentString: String?

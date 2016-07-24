@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAVersion) class Version: NSObject {
+@objc(JRAVersion) public class Version: NSObject {
     var url: NSURL?
     @objc(identifier) var id: String?
     var versionDescription: String?
@@ -18,5 +18,5 @@ import Foundation
     var releaseDate: NSDate?
     var overdue: Bool?
     var userReleaseDate: NSDate?
-    @objc(projectIdentifier) var projectId: Int?
+    @objc(projectIdentifier) var projectId: Int = NSNotFound
 }

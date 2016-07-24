@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAApplicationRole) class ApplicationRole: NSObject {
+@objc(JRAApplicationRole) public class ApplicationRole: NSObject {
     var key: String?
     var groups: [String]?
     var name: String?

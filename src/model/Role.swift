@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRARole) class Role: NSObject {
+@objc(JRARole) public class Role: NSObject {
     var name: String?
     @objc(identifier) var id: Int = NSNotFound
     var roleDescription: String?

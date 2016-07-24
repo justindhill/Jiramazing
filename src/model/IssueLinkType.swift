@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAIssueLinkType) class IssueLinkType: NSObject {
+@objc(JRAIssueLinkType) public class IssueLinkType: NSObject {
     @objc(identifier) var id: String?
     var name: String?
     var inward: String?

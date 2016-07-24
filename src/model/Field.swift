@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAField) class Field: NSObject {
+@objc(JRAField) public class Field: NSObject {
     @objc(identifier) var id: String?
     var name: String?
     var custom: Bool?

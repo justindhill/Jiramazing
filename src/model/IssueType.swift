@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAIssueType) class IssueType: NSObject {
+@objc(JRAIssueType) public class IssueType: NSObject {
     var url: NSURL?
     @objc(identifier) var id: String?
     var issueTypeDescription: String?

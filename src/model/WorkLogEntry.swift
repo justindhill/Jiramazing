@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAWorkLogEntry) class WorkLogEntry: NSObject {
+@objc(JRAWorkLogEntry) public class WorkLogEntry: NSObject {
     var url: NSURL?
     var author: User?
     var updateAuthor: User?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAComment) class Comment: NSObject {
+@objc(JRAComment) public class Comment: NSObject {
     var url: NSURL?
     @objc(identifier) var id: String?
     var author: User?

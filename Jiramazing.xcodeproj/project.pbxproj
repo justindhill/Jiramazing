@@ -28,6 +28,7 @@
 		D06654371D4439B1006C6532 /* Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06654361D4439B1006C6532 /* Visibility.swift */; };
 		D066543B1D443CB7006C6532 /* ApplicationRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066543A1D443CB7006C6532 /* ApplicationRole.swift */; };
 		D066543D1D443E2F006C6532 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066543C1D443E2F006C6532 /* Utils.swift */; };
+		D066543F1D444507006C6532 /* Jiramazing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D066543E1D444507006C6532 /* Jiramazing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		D06654361D4439B1006C6532 /* Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visibility.swift; sourceTree = "<group>"; };
 		D066543A1D443CB7006C6532 /* ApplicationRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationRole.swift; sourceTree = "<group>"; };
 		D066543C1D443E2F006C6532 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D066543E1D444507006C6532 /* Jiramazing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jiramazing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D06654131D43F920006C6532 /* model */,
 				D06654341D44342A006C6532 /* Constants.swift */,
 				D066543C1D443E2F006C6532 /* Utils.swift */,
+				D066543E1D444507006C6532 /* Jiramazing.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				D066541F1D440817006C6532 /* Comment.swift in Sources */,
 				D06654311D4430F7006C6532 /* Role.swift in Sources */,
 				D066542B1D440D6C006C6532 /* IssueLinkType.swift in Sources */,
+				D066543F1D444507006C6532 /* Jiramazing.swift in Sources */,
 				D066542D1D4415A0006C6532 /* IssueType.swift in Sources */,
 				D06654371D4439B1006C6532 /* Visibility.swift in Sources */,
 				D06654271D440BBD006C6532 /* FieldSchema.swift in Sources */,

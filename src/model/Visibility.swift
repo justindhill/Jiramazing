@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAVisibility) class Visibility: NSObject {
+@objc(JRAVisibility) public class Visibility: NSObject {
     var type: String?
     var value: String?
 }

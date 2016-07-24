@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAAvatarSize) enum AvatarSize: Int {
+@objc(JRAAvatarSize) public enum AvatarSize: Int {
     case Invalid
     case ExtraSmall
     case Small

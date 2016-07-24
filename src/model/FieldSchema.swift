@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAFieldSchema) class FieldSchema: NSObject {
+@objc(JRAFieldSchema) public class FieldSchema: NSObject {
     var type: String?
     var system: String?
 }

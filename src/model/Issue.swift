@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAIssue) class Issue: NSObject {
+@objc(JRAIssue) public class Issue: NSObject {
     @objc(identifier) var id: String?
     var title: String?
     var key: String?

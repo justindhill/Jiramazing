@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAAttachment) class Attachment: NSObject {
+@objc(JRAAttachment) public class Attachment: NSObject {
     var url: NSURL?
     var fileName: String?
     var author: User?

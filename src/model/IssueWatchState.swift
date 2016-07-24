@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAIssueWatchState) class IssueWatchState: NSObject {
+@objc(JRAIssueWatchState) public class IssueWatchState: NSObject {
     var watching: Bool?
     var watchers: [User]?
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAProject) class Project: NSObject {
+@objc(JRAProject) public class Project: NSObject {
     var url: NSURL?
     @objc(identifier) var id: String?
     var key: String?
