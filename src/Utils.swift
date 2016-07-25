@@ -23,4 +23,9 @@ internal extension String {
             return .Invalid
         }
     }
+
+    static func basicAuthEncodedString(username: String, password: String) -> String? {
+        let data = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)
+        return data?.base64EncodedStringWithOptions([])
+    }
 }

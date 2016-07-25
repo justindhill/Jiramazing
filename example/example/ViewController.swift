@@ -15,7 +15,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
 
-        print("authenticated: \(Jiramazing.instance.authenticated)")
+        Jiramazing.instance.baseUrl = NSURL(string: "https://worldnow.atlassian.net")!
+        Jiramazing.instance.username = "justin"
+        Jiramazing.instance.password = "password"
+        Jiramazing.instance.validateCredentials("justin", password: "password", completion: { (success) in
+            print(success)
+            print("authenticated: \(Jiramazing.instance.authenticated)")
+        })
     }
 
     override func didReceiveMemoryWarning() {

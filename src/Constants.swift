@@ -15,3 +15,9 @@ import Foundation
     case Medium
     case Large
 }
+
+@objc(JRAAuthenticationMethod) public enum AuthenticationMethod: Int {
+    case Unauthenticated
+    case OAuth
+    case Basic
+}
