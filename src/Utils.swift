@@ -26,6 +26,11 @@ internal extension String {
 
     static func basicAuthEncodedString(username: String, password: String) -> String? {
         let data = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)
-        return data?.base64EncodedStringWithOptions([])
+
+        if let encodedString = data?.base64EncodedStringWithOptions([]) {
+            return "Basic \(encodedString)"
+        }
+
+        return nil
     }
 }

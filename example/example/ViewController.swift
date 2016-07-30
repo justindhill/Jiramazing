@@ -17,11 +17,15 @@ class ViewController: UIViewController {
 
         Jiramazing.instance.baseUrl = NSURL(string: "https://worldnow.atlassian.net")!
         Jiramazing.instance.username = "justin"
-        Jiramazing.instance.password = "password"
-        Jiramazing.instance.validateCredentials("justin", password: "password", completion: { (success) in
-            print(success)
-            print("authenticated: \(Jiramazing.instance.authenticated)")
-        })
+        Jiramazing.instance.password = "VeZQYq$tUQAxkUnzhfzsNhr8V"
+//        Jiramazing.instance.validateSession({ (success) in
+//            print(success)
+//            print("authenticated: \(Jiramazing.instance.authenticated)")
+//        })
+
+        Jiramazing.instance.getProjects { (projects, error) in
+            print(projects)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -27,4 +27,8 @@ import Foundation
     var roles: [Role]?
     var avatarUrls: [AvatarSize: NSURL]?
     var category: ProjectCategory?
+
+    init(attributes: [String: AnyObject]) {
+        
+    }
 }

@@ -15,6 +15,7 @@ import Dispatch
     case MalformedBaseUrl
     case MalformedPath
     case MalformedJSONResponse
+    case UnexpectedResponseStructure
     case JSONEncodingError
 }
 
@@ -25,8 +26,8 @@ import Dispatch
     private static let TimeoutInterval: NSTimeInterval = 60
 
     public var authenticationMethod: AuthenticationMethod = .Basic
-    public var username: String?
-    public var password: String?
+    public var username: String = ""
+    public var password: String = ""
     public var baseUrl: NSURL?
 
     public static let ErrorDomain = "JiramazingErrorDomain"
@@ -43,9 +44,9 @@ import Dispatch
         )
     }
 
-    public func validateCredentials(username: String, password: String, completion: (success: Bool) -> Void) {
-        if let authorizationHeader = String.basicAuthEncodedString(username, password: password) {
-            self.get("/rest/auth/1/session", authenticationMethod: .None, customHeaders:["Authorization": authorizationHeader], completion: { (responseJSONObject, error) in
+    public func validateSession(completion: (success: Bool) -> Void) {
+        if let authorizationHeader = String.basicAuthEncodedString(self.username, password: self.password) {
+            self.get("/rest/auth/1/session", authenticationMethod: .Unauthenticated, customHeaders:["Authorization": authorizationHeader], completion: { (responseJSONObject, error) in
                 completion(success: error == nil)
             })
         } else {
@@ -53,11 +54,30 @@ import Dispatch
         }
     }
 
+    public func getProjects(completion: (projects: [Project]?, error: NSError?) -> Void) {
+        self.get("/rest/api/2/project") { (data, error) in
+            if let error = error {
+                completion(projects: nil, error: error)
+                return
+            }
+
+            if let data = data as? [[String: AnyObject]] {
+                let projects = data.map({ (projectDict) -> Project in
+                    return Project(attributes: projectDict)
+                })
+
+                completion(projects: projects, error: nil)
+            } else {
+                completion(projects: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+            }
+        }
+    }
+
     private func get(path: String,
                      queryParameters: [String: AnyObject]? = nil,
                      authenticationMethod: AuthenticationMethod? = nil,
                      customHeaders: [String: AnyObject]? = nil,
-                     completion: (data: [String: AnyObject]?, error: NSError?) -> Void) {
+                     completion: (data: AnyObject?, error: NSError?) -> Void) {
 
         guard let baseUrl = self.baseUrl else {
             completion(data: nil, error: NSError.jiramazingErrorWithCode(.BaseUrlNotSet, description: "Could not complete the request. The base URL was not set."))
@@ -68,9 +88,7 @@ import Dispatch
             let request = try NSMutableURLRequest.requestWithHTTPMethod("GET", baseUrl: baseUrl, path: path, queryParameters: queryParameters, customHeaders: customHeaders)
 
             weak var weakSelf = self
-            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: { (responseJSONObject, error) in
-                weakSelf?.handleResponseWithData(responseJSONObject, error: error, completion: completion)
-            })
+            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: completion)
         } catch let error as NSError {
             completion(data: nil, error: error)
         }
@@ -81,7 +99,7 @@ import Dispatch
                      bodyInfo: [String: AnyObject],
                      authenticationMethod: AuthenticationMethod?,
                      customHeaders: [String: AnyObject]? = nil,
-                     completion: (data: [String: AnyObject]?, error: NSError?) -> Void) {
+                     completion: (data: AnyObject?, error: NSError?) -> Void) {
 
         guard let baseUrl = self.baseUrl else {
             completion(data: nil, error: NSError.jiramazingErrorWithCode(.BaseUrlNotSet, description: "Could not complete the request. The base URL was not set."))
@@ -99,9 +117,7 @@ import Dispatch
             }
 
             weak var weakSelf = self
-            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: { (responseJSONObject, error) in
-                weakSelf?.handleResponseWithData(responseJSONObject, error: error, completion: completion)
-            })
+            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: completion)
         } catch let error as NSError {
             completion(data: nil, error: error)
         }
@@ -112,7 +128,7 @@ import Dispatch
                       bodyInfo: [String: AnyObject],
                       authenticationMethod: AuthenticationMethod?,
                       customHeaders: [String: AnyObject]? = nil,
-                      completion: (data: [String: AnyObject]?, error: NSError?) -> Void) {
+                      completion: (data: AnyObject?, error: NSError?) -> Void) {
 
         guard let baseUrl = self.baseUrl else {
             completion(data: nil, error: NSError.jiramazingErrorWithCode(.BaseUrlNotSet, description: "Could not complete the request. The base URL was not set."))
@@ -130,9 +146,7 @@ import Dispatch
             }
 
             weak var weakSelf = self
-            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: { (responseJSONObject, error) in
-                weakSelf?.handleResponseWithData(responseJSONObject, error: error, completion: completion)
-            })
+            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: completion)
         } catch let error as NSError {
             completion(data: nil, error: error)
         }
@@ -142,7 +156,7 @@ import Dispatch
                         queryParameters: [String: AnyObject]? = nil,
                         authenticationMethod: AuthenticationMethod?,
                         customHeaders: [String: AnyObject]? = nil,
-                        completion: (data: [String: AnyObject]?, error: NSError?) -> Void) {
+                        completion: (data: AnyObject?, error: NSError?) -> Void) {
 
         guard let baseUrl = self.baseUrl else {
             completion(data: nil, error: NSError.jiramazingErrorWithCode(.BaseUrlNotSet, description: "Could not complete the request. The base URL was not set."))
@@ -153,9 +167,7 @@ import Dispatch
             let request = try NSMutableURLRequest.requestWithHTTPMethod("GET", baseUrl: baseUrl, path: path, queryParameters: queryParameters, customHeaders: customHeaders)
 
             weak var weakSelf = self
-            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: { (responseJSONObject, error) in
-                weakSelf?.handleResponseWithData(responseJSONObject, error: error, completion: completion)
-            })
+            self.performDataTaskWithRequest(request, authenticationMethod: authenticationMethod ?? self.authenticationMethod, completion: completion)
         } catch let error as NSError {
             completion(data: nil, error: error)
         }
@@ -167,7 +179,7 @@ import Dispatch
 
     private func performDataTaskWithRequest(request: NSMutableURLRequest,
                                             authenticationMethod: AuthenticationMethod?,
-                                            completion: (data: [String: AnyObject]?, error: NSError?) -> Void) {
+                                            completion: (data: AnyObject?, error: NSError?) -> Void) {
 
         var resolvedAuthMethod = self.authenticationMethod
 
@@ -176,7 +188,7 @@ import Dispatch
         }
 
         if resolvedAuthMethod == .Basic {
-            guard let username = self.username, let password = self.password else {
+            if self.username.isEmpty || self.password.isEmpty {
                 completion(data: nil, error: NSError.jiramazingErrorWithCode(.Unauthenticated, description: "Authentication method is .Basic, but username or password is not set."))
                 return
             }
@@ -189,11 +201,12 @@ import Dispatch
             if let error = error {
                 completion(data: nil, error: error)
                 return
-            } else if let response = response as? NSHTTPURLResponse {
+            } else if let response = response as? NSHTTPURLResponse where response.statusCode >= 400 {
                 fatalError("Handling non-fatal HTTP errors not yet supported.")
             } else if let data = data {
                 do {
-                    if let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
+                    if let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? AnyObject {
+                        print(jsonObject)
                         completion(data: jsonObject, error: nil)
                         return
                     }
