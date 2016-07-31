@@ -19,4 +19,7 @@ import Foundation
     var overdue: Bool?
     var userReleaseDate: NSDate?
     @objc(projectIdentifier) var projectId: Int = NSNotFound
+
+    init(attributes: [String: AnyObject]) {
+    }
 }

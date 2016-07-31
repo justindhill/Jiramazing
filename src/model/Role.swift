@@ -12,4 +12,7 @@ import Foundation
     var name: String?
     @objc(identifier) var id: Int = NSNotFound
     var roleDescription: String?
+
+    init(attributes: [String: AnyObject]) {
+    }
 }

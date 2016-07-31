@@ -18,4 +18,7 @@ import Foundation
     var timeZone: NSTimeZone?
     var groups: [String]?
     var applicationRoles: [ApplicationRole]?
+
+    init(attributes: [String: AnyObject]) {
+    }
 }

@@ -55,7 +55,7 @@ import Dispatch
     }
 
     public func getProjects(completion: (projects: [Project]?, error: NSError?) -> Void) {
-        self.get("/rest/api/2/project") { (data, error) in
+        self.get("/rest/api/2/project", queryParameters: ["expand": "description,lead,url,projectKeys"]) { (data, error) in
             if let error = error {
                 completion(projects: nil, error: error)
                 return
@@ -237,9 +237,15 @@ private extension NSMutableURLRequest {
             components.path = path
 
             if let queryParameters = queryParameters {
-                components.queryItems?.appendContentsOf(queryParameters.map({ (key, value) -> NSURLQueryItem in
+                let queryItemsToAdd = queryParameters.map({ (key, value) -> NSURLQueryItem in
                     return NSURLQueryItem(name: key, value: String(value))
-                }))
+                })
+
+                if components.queryItems == nil {
+                    components.queryItems = queryItemsToAdd
+                } else {
+                    components.queryItems?.appendContentsOf(queryItemsToAdd)
+                }
             }
 
             if let url = components.URL {

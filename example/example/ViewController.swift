@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 //        })
 
         Jiramazing.instance.getProjects { (projects, error) in
-            print(projects)
+            dump(projects)
         }
     }
 

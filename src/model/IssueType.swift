@@ -16,4 +16,7 @@ import Foundation
     var name: String?
     var subtask: Bool?
     @objc(avatarIdentifier) var avatarId: Int = NSNotFound
+
+    init(attributes: [String: AnyObject]) {
+    }
 }

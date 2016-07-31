@@ -13,4 +13,7 @@ import Foundation
     @objc(identifier) var id: String?
     var name: String?
     var projectCategoryDescription: String?
+
+    init(attributes: [String: AnyObject]) {
+    }
 }

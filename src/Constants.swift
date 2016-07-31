@@ -14,6 +14,11 @@ import Foundation
     case Small
     case Medium
     case Large
+
+    init(_ string: String) {
+        // weird initializer for objc accessibility
+        self = string.avatarSize()
+    }
 }
 
 @objc(JRAAuthenticationMethod) public enum AuthenticationMethod: Int {
