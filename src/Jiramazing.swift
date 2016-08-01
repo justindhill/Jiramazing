@@ -12,6 +12,7 @@ import Dispatch
 @objc(JRAErrorCode) public enum ErrorCode: Int {
     case Unauthenticated
     case BaseUrlNotSet
+    case InvalidParameter
     case MalformedBaseUrl
     case MalformedPath
     case MalformedJSONResponse
@@ -69,6 +70,27 @@ import Dispatch
                 completion(projects: projects, error: nil)
             } else {
                 completion(projects: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+            }
+        }
+    }
+
+    public func getProject(projectId: String, completion: (project: Project?, error: NSError?) -> Void) {
+        guard let projectIdInt = Int(projectId) else {
+            completion(project: nil, error: NSError.jiramazingErrorWithCode(.InvalidParameter, description: "The project id passed could not be parsed to an integer. All Jira object ids are integers."))
+            return
+        }
+
+        self.get("/rest/api/2/project/\(projectId)") { (data, error) in
+            if let error = error {
+                completion(project: nil, error: error)
+                return
+            }
+
+            if let data = data as? [String: AnyObject] {
+                let project = Project(attributes: data)
+                completion(project: project, error: nil)
+            } else {
+                completion(project: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
             }
         }
     }

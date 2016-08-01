@@ -24,7 +24,7 @@ import Foundation
     var assigneeType: String?
     var versions: [Version]?
     var name: String?
-    var roles: [String: Role]?
+    var roles: [String: NSURL]?
     var avatarUrls: [AvatarSize: NSURL]?
     var category: ProjectCategory?
 
@@ -54,12 +54,12 @@ import Foundation
             })
         }
 
-        if let rolesAttributes = attributes["roles"] as? [String: AnyObject] {
-            var roles = [String: Role]()
+        if let rolesAttributes = attributes["roles"] as? [String: String] {
+            var roles = [String: NSURL]()
 
-            for (roleName, roleAttributes) in rolesAttributes {
-                if let roleAttributes = roleAttributes as? [String: AnyObject] {
-                    roles[roleName] = Role(attributes: roleAttributes)
+            for (roleName, roleUrlString) in rolesAttributes {
+                if let roleUrl = NSURL(string: roleUrlString) {
+                    roles[roleName] = roleUrl
                 }
             }
 
