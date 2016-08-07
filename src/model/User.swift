@@ -42,15 +42,15 @@ import Foundation
         }
 
         if let groupsAttributes = attributes["groups"]?["items"] as? [[String: String]] {
-            var groupsMap = [String: NSURL]()
+            var groupNames = [String]()
 
             for groupAttributes in groupsAttributes {
-                if let groupUrl = NSURL(string: groupAttributes["self"]) {
-                    groupsMap[groupName] = groupUrl
+                if let groupName = groupAttributes["name"] {
+                    groupNames.append(groupName)
                 }
             }
 
-            self.groups = groupsMap
+            self.groupNames = groupNames
         }
 
         if let applicationRolesAttributes = attributes["applicationRoles"]?["items"] as? [[String: AnyObject]] {

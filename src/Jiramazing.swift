@@ -99,7 +99,7 @@ import Dispatch
 
     // MARK: - User
     public func getUserWithUsername(username: String, completion: (user: User?, error: NSError?) -> Void) {
-        self.get("/rest/api/2/user", queryParameters: ["username": username]) { (data, error) in
+        self.get("/rest/api/2/user", queryParameters: ["username": username, "expand": "groups,applicationRoles"]) { (data, error) in
             if let error = error {
                 completion(user: nil, error: error)
                 return
@@ -115,7 +115,19 @@ import Dispatch
     }
 
     public func getUserWithKey(key: String, completion: (user: User?, error: NSError?) -> Void) {
+        self.get("/rest/api/2/user", queryParameters: ["key": key, "expand": "groups,applicationRoles"]) { (data, error) in
+            if let error = error {
+                completion(user: nil, error: error)
+                return
+            }
 
+            if let data = data as? [String: AnyObject] {
+                let user = User(attributes: data)
+                completion(user: user, error: nil)
+            } else {
+                completion(user: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+            }
+        }
     }
 
     // MARK: - HTTP methods

@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 //            print("authenticated: \(Jiramazing.instance.authenticated)")
 //        })
 
-        Jiramazing.instance.getUserWithUsername("justin") { (user, error) in
+        Jiramazing.instance.getUserWithKey("justin") { (user, error) in
             dump(user)
         }
     }
