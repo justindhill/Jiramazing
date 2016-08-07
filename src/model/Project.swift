@@ -72,18 +72,8 @@ import Foundation
             })
         }
 
-        if let avatarUrlsAttributes = attributes["avatarUrls"] as? [String: AnyObject] {
-            var avatarUrls = [AvatarSize: NSURL]()
-
-            for (sizeString, urlString) in avatarUrlsAttributes {
-                let size = AvatarSize(sizeString)
-
-                if let urlString = urlString as? String, let url = NSURL(string: urlString) where size != .Invalid {
-                    avatarUrls[size] = url
-                }
-            }
-
-            self.avatarUrls = avatarUrls
+        if let avatarUrlsAttributes = attributes["avatarUrls"] as? [String: String] {
+            self.avatarUrls = avatarUrlsAttributes.avatarSizeMap()
         }
 
         if let projectCategoryAttributes = attributes["projectCategory"] as? [String: AnyObject] {

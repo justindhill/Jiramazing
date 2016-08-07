@@ -34,3 +34,23 @@ internal extension String {
         return nil
     }
 }
+
+internal extension Dictionary where Key: StringLiteralConvertible, Value: StringLiteralConvertible {
+    func avatarSizeMap() -> [AvatarSize: NSURL] {
+        var avatarUrls = [AvatarSize: NSURL]()
+
+        for (sizeString, urlString) in self {
+            guard let sizeString = sizeString as? String, let urlString = urlString as? String else {
+                continue
+            }
+
+            let size = AvatarSize(sizeString)
+
+            if let url = NSURL(string: urlString) where size != .Invalid {
+                avatarUrls[size] = url
+            }
+        }
+
+        return avatarUrls
+    }
+}

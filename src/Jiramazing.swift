@@ -45,6 +45,7 @@ import Dispatch
         )
     }
 
+    // MARK: - Session
     public func validateSession(completion: (success: Bool) -> Void) {
         if let authorizationHeader = String.basicAuthEncodedString(self.username, password: self.password) {
             self.get("/rest/auth/1/session", authenticationMethod: .Unauthenticated, customHeaders:["Authorization": authorizationHeader], completion: { (responseJSONObject, error) in
@@ -55,6 +56,7 @@ import Dispatch
         }
     }
 
+    // MARK: - Project
     public func getProjects(completion: (projects: [Project]?, error: NSError?) -> Void) {
         self.get("/rest/api/2/project", queryParameters: ["expand": "description,lead,url,projectKeys"]) { (data, error) in
             if let error = error {
@@ -74,7 +76,7 @@ import Dispatch
         }
     }
 
-    public func getProject(projectId: String, completion: (project: Project?, error: NSError?) -> Void) {
+    public func getProjectWithProjectId(projectId: String, completion: (project: Project?, error: NSError?) -> Void) {
         guard let projectIdInt = Int(projectId) else {
             completion(project: nil, error: NSError.jiramazingErrorWithCode(.InvalidParameter, description: "The project id passed could not be parsed to an integer. All Jira object ids are integers."))
             return
@@ -95,6 +97,28 @@ import Dispatch
         }
     }
 
+    // MARK: - User
+    public func getUserWithUsername(username: String, completion: (user: User?, error: NSError?) -> Void) {
+        self.get("/rest/api/2/user", queryParameters: ["username": username]) { (data, error) in
+            if let error = error {
+                completion(user: nil, error: error)
+                return
+            }
+
+            if let data = data as? [String: AnyObject] {
+                let user = User(attributes: data)
+                completion(user: user, error: nil)
+            } else {
+                completion(user: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+            }
+        }
+    }
+
+    public func getUserWithKey(key: String, completion: (user: User?, error: NSError?) -> Void) {
+
+    }
+
+    // MARK: - HTTP methods
     private func get(path: String,
                      queryParameters: [String: AnyObject]? = nil,
                      authenticationMethod: AuthenticationMethod? = nil,
@@ -195,10 +219,6 @@ import Dispatch
         }
     }
 
-    private func handleResponseWithData(responseJSONObject: [String: AnyObject]?, error: NSError?, completion: (data: [String: AnyObject]?, error: NSError?) -> Void) {
-
-    }
-
     private func performDataTaskWithRequest(request: NSMutableURLRequest,
                                             authenticationMethod: AuthenticationMethod?,
                                             completion: (data: AnyObject?, error: NSError?) -> Void) {
@@ -243,6 +263,7 @@ import Dispatch
     }
 }
 
+// MARK: - Extensions
 private extension NSError {
     class func jiramazingErrorWithCode(code: ErrorCode, description: String) -> NSError {
         return NSError(

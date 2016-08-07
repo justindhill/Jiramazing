@@ -21,4 +21,7 @@ import Foundation
     var userCountDescription: String?
     var hasUnlimitedSeats: Bool?
     var platform: Bool?
+
+    init(attributes: [String: AnyObject]) {
+    }
 }
