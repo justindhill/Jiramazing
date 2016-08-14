@@ -17,4 +17,10 @@ import Foundation
     var mimeType: String?
     var contentUrl: NSURL?
     var thumbnailUrl: NSURL?
+
+    init(attributes: [String: AnyObject]) {
+        super.init()
+
+        
+    }
 }

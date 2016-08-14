@@ -20,5 +20,8 @@ import Foundation
     var timeSpent: NSTimeInterval?
     @objc(identifier) var id: String?
     @objc(issueIdentifier) var issueId: String?
-    
+
+    init(attributes: [String: AnyObject]) {
+        super.init()
+    }
 }

@@ -23,5 +23,6 @@ import Foundation
     var platform: Bool?
 
     init(attributes: [String: AnyObject]) {
+        super.init()
     }
 }

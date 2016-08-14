@@ -21,5 +21,6 @@ import Foundation
     @objc(projectIdentifier) var projectId: Int = NSNotFound
 
     init(attributes: [String: AnyObject]) {
+        super.init()
     }
 }

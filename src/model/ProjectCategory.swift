@@ -15,5 +15,6 @@ import Foundation
     var projectCategoryDescription: String?
 
     init(attributes: [String: AnyObject]) {
+        super.init()
     }
 }

@@ -15,4 +15,8 @@ import Foundation
     var originalEstimate: NSTimeInterval?
     var remainingEstimate: NSTimeInterval?
     var timeSpent: NSTimeInterval?
+
+    init(attributes: [String: AnyObject]) {
+
+    }
 }

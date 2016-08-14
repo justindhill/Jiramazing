@@ -18,5 +18,6 @@ import Foundation
     @objc(avatarIdentifier) var avatarId: Int = NSNotFound
 
     init(attributes: [String: AnyObject]) {
+        super.init()
     }
 }

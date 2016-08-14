@@ -17,4 +17,8 @@ import Foundation
     var creationDate: NSDate?
     var lastUpdated: NSDate?
     var visibility: Visibility?
+
+    init(attributes: [String: AnyObject]) {
+        super.init()
+    }
 }

@@ -71,7 +71,7 @@ import Dispatch
 
                 completion(projects: projects, error: nil)
             } else {
-                completion(projects: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+                completion(projects: nil, error: NSError.jiramazingUnexpectedStructureError())
             }
         }
     }
@@ -92,7 +92,24 @@ import Dispatch
                 let project = Project(attributes: data)
                 completion(project: project, error: nil)
             } else {
-                completion(project: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+                completion(project: nil, error: NSError.jiramazingUnexpectedStructureError())
+            }
+        }
+    }
+
+    // MARK: - Issue
+    public func getIssueWithIdOrKey(idOrKey: String, completion: (issue: Issue?, error: NSError?) -> Void) {
+        self.get("/rest/api/2/issue/\(idOrKey)", queryParameters: ["expand": "names,editmeta,changelog"]) { (data, error) in
+            if let error = error {
+                completion(issue: nil, error: error)
+                return
+            }
+
+            if let data = data as? [String: AnyObject] {
+                let issue = Issue(attributes: data)
+                completion(issue: issue, error: nil)
+            } else {
+                completion(issue: nil, error: NSError.jiramazingUnexpectedStructureError())
             }
         }
     }
@@ -109,7 +126,7 @@ import Dispatch
                 let user = User(attributes: data)
                 completion(user: user, error: nil)
             } else {
-                completion(user: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+                completion(user: nil, error: NSError.jiramazingUnexpectedStructureError())
             }
         }
     }
@@ -125,7 +142,7 @@ import Dispatch
                 let user = User(attributes: data)
                 completion(user: user, error: nil)
             } else {
-                completion(user: nil, error: NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure."))
+                completion(user: nil, error: NSError.jiramazingUnexpectedStructureError())
             }
         }
     }
@@ -283,6 +300,10 @@ private extension NSError {
             code: code.rawValue,
             userInfo: [NSLocalizedDescriptionKey: description]
         )
+    }
+
+    class func jiramazingUnexpectedStructureError() -> NSError {
+        return NSError.jiramazingErrorWithCode(.UnexpectedResponseStructure, description: "The response was valid JSON, but was of an unexpected structure.")
     }
 }
 

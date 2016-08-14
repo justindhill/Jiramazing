@@ -11,4 +11,8 @@ import Foundation
 @objc(JRAIssueWatchState) public class IssueWatchState: NSObject {
     var watching: Bool?
     var watchers: [User]?
+
+    init(attributes: [String: AnyObject]) {
+        super.init()
+    }
 }

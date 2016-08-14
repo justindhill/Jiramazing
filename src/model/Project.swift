@@ -29,6 +29,8 @@ import Foundation
     var category: ProjectCategory?
 
     init(attributes: [String: AnyObject]) {
+        super.init()
+
         self.id = attributes["id"] as? String
         self.key = attributes["key"] as? String
         self.projectDescription = attributes["description"] as? String

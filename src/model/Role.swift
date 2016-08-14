@@ -14,5 +14,6 @@ import Foundation
     var roleDescription: String?
 
     init(attributes: [String: AnyObject]) {
+        super.init()
     }
 }
