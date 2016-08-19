@@ -17,7 +17,7 @@ import Foundation
 
     // TODO: components support
 
-    var issueTypes: [IssueType]?
+    var issueRelationTypes: [IssueRelationType]?
 
     var browseUrl: NSURL?
     var email: String?
@@ -50,9 +50,9 @@ import Foundation
             self.lead = User(attributes: leadAttributes)
         }
 
-        if let issueTypesAttributes = attributes["issueTypes"] as? [[String: AnyObject]] {
-            self.issueTypes = issueTypesAttributes.map({ (issueTypeAttributes) -> IssueType in
-                return IssueType(attributes: issueTypeAttributes)
+        if let issueRelationTypesAttributes = attributes["issueTypes"] as? [[String: AnyObject]] {
+            self.issueRelationTypes = issueRelationTypesAttributes.map({ (issueTypeAttributes) -> IssueRelationType in
+                return IssueRelationType(attributes: issueTypeAttributes)
             })
         }
 

@@ -21,7 +21,7 @@ import Foundation
     var issueDescription: String?
     var project: Project?
     var comments: [Comment]?
-    var issueLinks: [IssueLink]?
+    var issueLinks: [IssueRelation]?
     var workLogEntries: [WorkLogEntry]?
     var timeTracking: IssueTimeTracking?
 

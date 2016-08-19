@@ -8,9 +8,9 @@
 
 import Foundation
 
-@objc(JRAIssueLink) public class IssueLink: NSObject {
+@objc(JRAIssueRelation) public class IssueRelation: NSObject {
     @objc(identifier) var id: String?
-    var type: IssueType?
+    var type: IssueRelationType?
     var inwardIssue: Issue?
     var outwardIssue: Issue?
 }
