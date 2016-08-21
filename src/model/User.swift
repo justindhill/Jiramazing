@@ -9,16 +9,16 @@
 import Foundation
 
 @objc(JRAUser) public class User: NSObject {
-    var url: NSURL?
-    var key: String?
-    var name: String?
-    var displayName: String?
-    var emailAddress: String?
-    var avatarUrls: [AvatarSize: NSURL]?
-    var active: Bool?
-    var timeZone: NSTimeZone?
-    var groupNames: [String]?
-    var applicationRoles: [ApplicationRole]?
+    public var url: NSURL?
+    public var key: String?
+    public var name: String?
+    public var displayName: String?
+    public var emailAddress: String?
+    public var avatarUrls: [AvatarSize: NSURL]?
+    public var active: Bool?
+    public var timeZone: NSTimeZone?
+    public var groupNames: [String]?
+    public var applicationRoles: [ApplicationRole]?
 
     init(attributes: [String: AnyObject]) {
         super.init()

@@ -114,6 +114,52 @@ import Dispatch
         }
     }
 
+    // MARK: - Search
+    public func searchIssuesWithJQLString(jql: String,
+                                          offset: Int = 0,
+                                          maxResults: Int = 50,
+                                          fields: [String]? = nil,
+                                          expand: [String]? = nil,
+                                          completion: (issues: [Issue]?, total: Int, error: NSError?) -> Void) {
+
+        var params: [String: AnyObject] = [
+            "jql": jql,
+            "startAt": offset,
+            "maxResults": maxResults
+        ]
+
+        if let fields = fields {
+            params["fields"] = fields.joinWithSeparator(",")
+        }
+
+        if let expand = expand {
+            params["expand"] = expand.joinWithSeparator(",")
+        }
+
+        self.get("/rest/api/2/search", queryParameters: params) { (data, error) in
+            if let error = error {
+                completion(issues: nil, total: 0, error: error)
+                return
+            }
+
+            if let data = data as? [String: AnyObject],
+               let total = data["total"] as? Int,
+               let issuesAttributes = data["issues"] as? [[String: AnyObject]] {
+
+                let issues = issuesAttributes.map({ (issueAttributes) -> Issue in
+                    return Issue(attributes: issueAttributes)
+                })
+
+                completion(issues: issues, total: total, error: nil)
+                return
+
+            } else {
+                completion(issues: nil, total: 0, error: NSError.jiramazingUnexpectedStructureError())
+                return
+            }
+        }
+    }
+
     // MARK: - User
     public func getUserWithUsername(username: String, completion: (user: User?, error: NSError?) -> Void) {
         self.get("/rest/api/2/user", queryParameters: ["username": username, "expand": "groups,applicationRoles"]) { (data, error) in
@@ -277,7 +323,6 @@ import Dispatch
             } else if let data = data {
                 do {
                     if let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? AnyObject {
-                        print(jsonObject)
                         completion(data: jsonObject, error: nil)
                         return
                     }

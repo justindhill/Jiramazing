@@ -1,5 +1,5 @@
 //
-//  IssueRelationType.swift
+//  IssueType.swift
 //  Jiramazing
 //
 //  Created by Justin Hill on 7/23/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAIssueRelationType) public class IssueRelationType: NSObject {
+@objc(JRAIssueType) public class IssueType: NSObject {
     var url: NSURL?
     @objc(identifier) var id: String?
     var issueTypeDescription: String?

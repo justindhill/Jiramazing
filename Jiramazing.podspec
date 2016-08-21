@@ -19,4 +19,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
 
+  s.dependency 'HexColors', '~> 4.0'
+  s.dependency 'ISO8601'
 end

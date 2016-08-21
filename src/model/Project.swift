@@ -9,24 +9,24 @@
 import Foundation
 
 @objc(JRAProject) public class Project: NSObject {
-    var url: NSURL?
+    public var url: NSURL?
     @objc(identifier) var id: String?
-    var key: String?
-    var projectDescription: String?
-    var lead: User?
+    public var key: String?
+    public var projectDescription: String?
+    public var lead: User?
 
     // TODO: components support
 
-    var issueRelationTypes: [IssueRelationType]?
+    public var issueTypes: [IssueType]?
 
-    var browseUrl: NSURL?
-    var email: String?
-    var assigneeType: String?
-    var versions: [Version]?
-    var name: String?
-    var roles: [String: NSURL]?
-    var avatarUrls: [AvatarSize: NSURL]?
-    var category: ProjectCategory?
+    public var browseUrl: NSURL?
+    public var email: String?
+    public var assigneeType: String?
+    public var versions: [Version]?
+    public var name: String?
+    public var roles: [String: NSURL]?
+    public var avatarUrls: [AvatarSize: NSURL]?
+    public var category: ProjectCategory?
 
     init(attributes: [String: AnyObject]) {
         super.init()
@@ -50,9 +50,9 @@ import Foundation
             self.lead = User(attributes: leadAttributes)
         }
 
-        if let issueRelationTypesAttributes = attributes["issueTypes"] as? [[String: AnyObject]] {
-            self.issueRelationTypes = issueRelationTypesAttributes.map({ (issueTypeAttributes) -> IssueRelationType in
-                return IssueRelationType(attributes: issueTypeAttributes)
+        if let issueTypesAttributes = attributes["issueTypes"] as? [[String: AnyObject]] {
+            self.issueTypes = issueTypesAttributes.map({ (issueTypeAttributes) -> IssueType in
+                return IssueType(attributes: issueTypeAttributes)
             })
         }
 
