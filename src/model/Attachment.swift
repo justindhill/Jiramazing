@@ -9,14 +9,14 @@
 import Foundation
 
 @objc(JRAAttachment) public class Attachment: NSObject {
-    var url: NSURL?
-    var fileName: String?
-    var author: User?
-    var creationDate: NSDate?
-    var sizeBytes: UInt?
-    var mimeType: String?
-    var contentUrl: NSURL?
-    var thumbnailUrl: NSURL?
+    public var url: NSURL?
+    public var fileName: String?
+    public var author: User?
+    public var creationDate: NSDate?
+    public var sizeBytes: UInt?
+    public var mimeType: String?
+    public var contentUrl: NSURL?
+    public var thumbnailUrl: NSURL?
 
     init(attributes: [String: AnyObject]) {
         super.init()

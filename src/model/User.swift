@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(JRAUser) public class User: NSObject {
+@objc(JRAUser) public class User: NSObject, NSCoding {
     public var url: NSURL?
     public var key: String?
     public var name: String?
@@ -19,6 +19,17 @@ import Foundation
     public var timeZone: NSTimeZone?
     public var groupNames: [String]?
     public var applicationRoles: [ApplicationRole]?
+
+    private let UrlKey = "url"
+    private let KeyKey = "key"
+    private let NameKey = "name"
+    private let DisplayNameKey = "displayName"
+    private let EmailKey = "email"
+    private let AvatarUrlsKey = "avatarUrls"
+    private let ActiveKey = "active"
+    private let TimeZoneKey = "timeZone"
+    private let GroupNamesKey = "groupNames"
+    private let ApplicationRolesKey = "applicationRoles"
 
     init(attributes: [String: AnyObject]) {
         super.init()
@@ -58,5 +69,36 @@ import Foundation
                 return ApplicationRole(attributes: appRoleAttributes)
             })
         }
+    }
+
+    public required init?(coder d: NSCoder) {
+        super.init()
+
+        self.url = d.decodeObjectForKey(UrlKey) as? NSURL
+        self.key = d.decodeObjectForKey(KeyKey) as? String
+        self.name = d.decodeObjectForKey(NameKey) as? String
+        self.displayName = d.decodeObjectForKey(DisplayNameKey) as? String
+        self.emailAddress = d.decodeObjectForKey(EmailKey) as? String
+
+        // WARNING: AvatarUrls not encoded
+
+        self.active = d.decodeObjectForKey(ActiveKey) as? Bool
+        self.timeZone = d.decodeObjectForKey(TimeZoneKey) as? NSTimeZone
+        self.groupNames = d.decodeObjectForKey(GroupNamesKey) as? [String]
+        self.applicationRoles = d.decodeObjectForKey(ApplicationRolesKey) as? [ApplicationRole]
+    }
+
+    public func encodeWithCoder(c: NSCoder) {
+        c.encodeObject(self.url, forKey: UrlKey)
+        c.encodeObject(self.key, forKey: KeyKey)
+        c.encodeObject(self.displayName, forKey: DisplayNameKey)
+        c.encodeObject(self.emailAddress, forKey: EmailKey)
+
+        // WARNING: AvatarUrls not encoded
+
+        c.encodeObject(self.active, forKey: ActiveKey)
+        c.encodeObject(self.timeZone, forKey: TimeZoneKey)
+        c.encodeObject(self.groupNames, forKey: GroupNamesKey)
+        c.encodeObject(self.applicationRoles, forKey: ApplicationRolesKey)
     }
 }

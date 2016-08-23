@@ -8,9 +8,9 @@
 
 import Foundation
 
-@objc(JRAProject) public class Project: NSObject {
+@objc(JRAProject) public class Project: NSObject, NSCoding {
     public var url: NSURL?
-    @objc(identifier) var id: String?
+    @objc(identifier) public var id: String?
     public var key: String?
     public var projectDescription: String?
     public var lead: User?
@@ -18,7 +18,6 @@ import Foundation
     // TODO: components support
 
     public var issueTypes: [IssueType]?
-
     public var browseUrl: NSURL?
     public var email: String?
     public var assigneeType: String?
@@ -27,6 +26,22 @@ import Foundation
     public var roles: [String: NSURL]?
     public var avatarUrls: [AvatarSize: NSURL]?
     public var category: ProjectCategory?
+
+    // Coding keys
+    private let UrlKey = "url"
+    private let IdKey = "id"
+    private let KeyKey = "key"
+    private let DescriptionKey = "description"
+    private let LeadKey = "lead"
+    private let IssueTypesKey = "issueTypes"
+    private let BrowseUrlKey = "browseUrl"
+    private let EmailKey = "emailKey"
+    private let AssigneeTypeKey = "assigneeType"
+    private let VersionsKey = "versions"
+    private let NameKey = "name"
+    private let RolesKey = "roles"
+    private let AvatarUrlsKey = "avatarUrls"
+    private let CategoryKey = "category"
 
     init(attributes: [String: AnyObject]) {
         super.init()
@@ -83,6 +98,27 @@ import Foundation
         }
     }
 
+    public required init?(coder d: NSCoder) {
+        super.init()
+
+        self.url = d.decodeObjectForKey(UrlKey) as? NSURL
+        self.id = d.decodeObjectForKey(IdKey) as? String
+        self.key = d.decodeObjectForKey(KeyKey) as? String
+        self.projectDescription = d.decodeObjectForKey(DescriptionKey) as? String
+        self.lead = d.decodeObjectForKey(LeadKey) as? User
+        self.issueTypes = d.decodeObjectForKey(IssueTypesKey) as? [IssueType]
+        self.browseUrl = d.decodeObjectForKey(BrowseUrlKey) as? NSURL
+        self.email = d.decodeObjectForKey(EmailKey) as? String
+        self.assigneeType = d.decodeObjectForKey(AssigneeTypeKey) as? String
+        self.versions = d.decodeObjectForKey(VersionsKey) as? [Version]
+        self.name = d.decodeObjectForKey(NameKey) as? String
+        self.roles = d.decodeObjectForKey(RolesKey) as? [String: NSURL]
+
+        // WARNING: Avatar URLs
+
+        self.category = d.decodeObjectForKey(CategoryKey) as? ProjectCategory
+    }
+
     override public var description: String {
         get {
             let key = self.key ?? "nil"
@@ -90,5 +126,25 @@ import Foundation
 
             return super.description.stringByAppendingString(" \(key) - \(id)")
         }
+    }
+
+    public func encodeWithCoder(c: NSCoder) {
+        c.encodeObject(self.url, forKey: UrlKey)
+        c.encodeObject(self.id, forKey: IdKey)
+        c.encodeObject(self.key, forKey: KeyKey)
+        c.encodeObject(self.projectDescription, forKey: DescriptionKey)
+        c.encodeObject(self.lead, forKey: LeadKey)
+        c.encodeObject(self.issueTypes, forKey: IssueTypesKey)
+        c.encodeObject(self.browseUrl, forKey: BrowseUrlKey)
+        c.encodeObject(self.email, forKey: EmailKey)
+        c.encodeObject(self.assigneeType, forKey: AssigneeTypeKey)
+        c.encodeObject(self.versions, forKey: VersionsKey)
+        c.encodeObject(self.name, forKey: NameKey)
+        c.encodeObject(self.roles, forKey: RolesKey)
+
+        // WARNING: avatar urls aren't encoded
+//        c.encodeObject(self.avatarUrls, forKey: AvatarUrlsKey)
+
+        c.encodeObject(self.category, forKey: CategoryKey)
     }
 }

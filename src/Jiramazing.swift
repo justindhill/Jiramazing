@@ -76,13 +76,9 @@ import Dispatch
         }
     }
 
-    public func getProjectWithProjectId(projectId: String, completion: (project: Project?, error: NSError?) -> Void) {
-        guard let projectIdInt = Int(projectId) else {
-            completion(project: nil, error: NSError.jiramazingErrorWithCode(.InvalidParameter, description: "The project id passed could not be parsed to an integer. All Jira object ids are integers."))
-            return
-        }
+    public func getProjectWithProjectIdOrKey(projectIdOrKey: String, completion: (project: Project?, error: NSError?) -> Void) {
 
-        self.get("/rest/api/2/project/\(projectId)") { (data, error) in
+        self.get("/rest/api/2/project/\(projectIdOrKey)") { (data, error) in
             if let error = error {
                 completion(project: nil, error: error)
                 return
@@ -313,6 +309,8 @@ import Dispatch
             let authString = String.basicAuthEncodedString(username, password: password)
             request.setValue(authString, forHTTPHeaderField: "Authorization")
         }
+
+        request.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
 
         let task = self.urlSession.dataTaskWithRequest(request) { (data, response, error) in
             if let error = error {

@@ -9,13 +9,13 @@
 import Foundation
 
 @objc(JRAIssueType) public class IssueType: NSObject {
-    var url: NSURL?
-    @objc(identifier) var id: String?
-    var issueTypeDescription: String?
-    var iconUrl: NSURL?
-    var name: String?
-    var subtask: Bool?
-    @objc(avatarIdentifier) var avatarId: Int = NSNotFound
+    public var url: NSURL?
+    @objc(identifier) public var id: String?
+    public var issueTypeDescription: String?
+    public var iconUrl: NSURL?
+    public var name: String?
+    public var subtask: Bool?
+    @objc(avatarIdentifier) public var avatarId: Int = NSNotFound
 
     init(attributes: [String: AnyObject]) {
         super.init()

@@ -9,7 +9,7 @@
 import Foundation
 import ISO8601
 
-@objc(JRAIssue) public class Issue: NSObject {
+@objc(JRAIssue) public class Issue: NSObject, NSCopying {
     @objc(identifier) public var id: String?
     public var key: String?
     public var url: NSURL?
@@ -49,6 +49,10 @@ import ISO8601
     public var reporter: User?
     public var votes: Int?
     public var hasVoted: Bool?
+
+    override init() {
+        super.init()
+    }
 
     init(attributes: [String: AnyObject]) {
         super.init()
@@ -148,5 +152,9 @@ import ISO8601
         if let dueDateString = fieldsAttributes["duedate"] as? String {
             self.dueDate = NSDate(ISO8601String: dueDateString)
         }
+    }
+
+    public func copyWithZone(zone: NSZone) -> AnyObject {
+        return Issue()
     }
 }
