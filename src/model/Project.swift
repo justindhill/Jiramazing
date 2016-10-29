@@ -113,8 +113,18 @@ import Foundation
         self.versions = d.decodeObjectForKey(VersionsKey) as? [Version]
         self.name = d.decodeObjectForKey(NameKey) as? String
         self.roles = d.decodeObjectForKey(RolesKey) as? [String: NSURL]
-
-        // WARNING: Avatar URLs
+        
+        if let decodableUrls = d.decodeObjectForKey(AvatarUrlsKey) as? [Int: NSURL] {
+            var decodedUrls = [AvatarSize: NSURL]()
+            
+            for (key, value) in decodableUrls {
+                if let avatarSize = AvatarSize(rawValue: key) {
+                    decodedUrls[avatarSize] = value
+                }
+            }
+            
+            self.avatarUrls = decodedUrls
+        }
 
         self.category = d.decodeObjectForKey(CategoryKey) as? ProjectCategory
     }
@@ -142,8 +152,16 @@ import Foundation
         c.encodeObject(self.name, forKey: NameKey)
         c.encodeObject(self.roles, forKey: RolesKey)
 
-        // WARNING: avatar urls aren't encoded
-//        c.encodeObject(self.avatarUrls, forKey: AvatarUrlsKey)
+        if let avatarUrls = self.avatarUrls {
+            var encodableUrls = [Int: NSURL]()
+            for (key, value) in avatarUrls {
+                encodableUrls[key.rawValue] = value
+            }
+            
+            c.encodeObject(encodableUrls, forKey: AvatarUrlsKey)
+        } else {
+            c.encodeObject(nil, forKey: AvatarUrlsKey)
+        }
 
         c.encodeObject(self.category, forKey: CategoryKey)
     }
