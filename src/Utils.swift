@@ -23,14 +23,16 @@ internal extension String {
             return .Invalid
         }
     }
+}
 
-    static func basicAuthEncodedString(username: String, password: String) -> String? {
+public extension NSString {
+    class func jiramazing_basicAuthEncodedString(username: String, password: String) -> String? {
         let data = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)
-
+        
         if let encodedString = data?.base64EncodedStringWithOptions([]) {
             return "Basic \(encodedString)"
         }
-
+        
         return nil
     }
 }

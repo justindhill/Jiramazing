@@ -47,7 +47,7 @@ import Dispatch
 
     // MARK: - Session
     public func validateSession(completion: (success: Bool) -> Void) {
-        if let authorizationHeader = String.basicAuthEncodedString(self.username, password: self.password) {
+        if let authorizationHeader = String.jiramazing_basicAuthEncodedString(self.username, password: self.password) {
             self.get("/rest/auth/1/session", authenticationMethod: .Unauthenticated, customHeaders:["Authorization": authorizationHeader], completion: { (responseJSONObject, error) in
                 completion(success: error == nil)
             })
@@ -306,7 +306,7 @@ import Dispatch
                 return
             }
 
-            let authString = String.basicAuthEncodedString(username, password: password)
+            let authString = String.jiramazing_basicAuthEncodedString(username, password: password)
             request.setValue(authString, forHTTPHeaderField: "Authorization")
         }
 
